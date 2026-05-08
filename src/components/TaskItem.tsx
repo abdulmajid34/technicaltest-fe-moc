@@ -35,7 +35,7 @@ export const TaskItem = ({ task, isSelected, onSelect }: TaskItemProps) => {
   };
 
   return (
-    <div className={`card-neo !p-3 flex gap-4 items-start group mb-4 ${task.completed ? 'bg-gray-200' : 'bg-white'}`}>
+    <div className={`card-neo !p-3 flex gap-4 items-start group mb-4 text-black ${task.completed ? 'bg-gray-200' : 'bg-white'}`}>
       <div className="pt-1">
         <input
           type="checkbox"

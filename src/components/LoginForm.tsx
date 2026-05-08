@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CheckSquare } from 'lucide-react';
 
 const loginSchema = z.object({
@@ -26,6 +26,11 @@ export const LoginForm = () => {
   } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
   });
+
+  // Pastikan dark mode dihilangkan saat di halaman login
+  useEffect(() => {
+    document.documentElement.classList.remove('dark');
+  }, []);
 
   const onSubmit = async (data: LoginFormInputs) => {
     setIsLoading(true);
@@ -65,8 +70,13 @@ export const LoginForm = () => {
       </div>
 
       {/* Kolom Kanan */}
-      <div className="p-8 md:p-12 flex items-center justify-center">
-        <div className="max-w-md w-full">
+      <div className="p-8 md:p-12 flex items-center justify-center relative overflow-hidden">
+        {/* Dekorasi Background Kanan */}
+        <div className="absolute top-12 right-12 w-16 h-16 bg-neo-green border-4 border-black rounded-full mix-blend-multiply opacity-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"></div>
+        <div className="absolute bottom-12 left-12 w-24 h-24 bg-neo-yellow border-4 border-black mix-blend-multiply opacity-50 -rotate-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"></div>
+        <div className="absolute top-1/2 right-4 w-12 h-12 bg-neo-pink border-4 border-black rounded-tl-3xl mix-blend-multiply opacity-50 rotate-45 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"></div>
+
+        <div className="max-w-md w-full relative z-10">
           <div className="mb-8">
             <h2 className="text-3xl font-black uppercase mb-2">Masuk</h2>
             <div className="card-neo bg-neo-blue inline-block mb-4 p-3">

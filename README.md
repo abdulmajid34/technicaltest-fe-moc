@@ -5,7 +5,7 @@ TaskFlow Manager adalah aplikasi manajemen tugas yang dibuat menggunakan React, 
 ## Teknologi yang Digunakan
 
 - React + Vite + TypeScript
-- Tailwind CSS
+- Tailwind CSS v4 (dengan custom utilities dan variant)
 - Zustand (Global State & Session)
 - Axios + TanStack Query (React Query)
 - LocalStorage (sebagai database offline mock)
@@ -40,6 +40,20 @@ TaskFlow Manager adalah aplikasi manajemen tugas yang dibuat menggunakan React, 
    ```bash
    npm run preview
    ```
+
+## Fitur UI/UX (Neobrutalism & Dark Mode)
+
+Aplikasi ini telah diperbarui dengan sentuhan antarmuka yang sangat ekspresif:
+
+1. **Desain Neobrutalism:** 
+   Antarmuka dibangun dengan pendekatan *Neobrutalism* yang mencolok. Ciri khasnya meliputi palet warna-warni yang ngejreng, garis batas (border) hitam tebal, sudut-sudut yang tajam (tanpa rounded yang berlebihan), font yang tebal (*black font-weight*), serta bentuk bayangan yang solid tanpa blur (hard shadows).
+   
+2. **Dark / Light Mode Responsif:** 
+   Disediakan tombol pengalih (*toggle switch*) berupa ikon Matahari dan Bulan di *header* halaman utama. Saat masuk ke *Dark Mode*, *background* latar membaur jadi gelap (`zinc-900`) dan stiker/ornamen di belakang layar memancarkan opacity penuh menjadi cerah. Fitur ini menggunakan konfigurasi *custom variant* di Tailwind v4 dengan *state* disimpan memakai Zustand persist.
+   *Catatan:* Pada halaman Login, mode akan terkunci pada Light Mode secara otomatis untuk desain tata letak kolom yang optimal.
+   
+3. **Keterbacaan Optimal (Accessibility):**
+   Kendati tema gelap dihidupkan, kartu tugas/ *Task Card* diatur agar tetap kokoh dengan latar belakang putih dan teks hitam. Hal ini mencegah tulisan tertelan latar gelap dan mempertahankan prinsip kontras tinggi dari neobrutalism.
 
 ## Struktur Folder
 

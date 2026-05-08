@@ -86,8 +86,8 @@ export const TaskList = () => {
       )}
 
       {filteredTasks.length === 0 ? (
-        <div className="text-center py-12 card-neo bg-gray-100 border-dashed">
-          <p className="font-bold text-gray-500 uppercase">Tidak ada tugas yang ditemukan.</p>
+        <div className="text-center py-12 card-neo bg-gray-100 dark:bg-zinc-800 border-dashed transition-colors duration-300">
+          <p className="font-bold text-gray-500 dark:text-gray-400 uppercase">Tidak ada tugas yang ditemukan.</p>
         </div>
       ) : (
         <div className="grid gap-2">
