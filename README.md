@@ -50,10 +50,10 @@ Proyek ini dibangun untuk memenuhi kriteria technical test yang mencakup:
 
 > Folder `screenshots/` dapat diisi dengan screenshot aktual setelah menjalankan `npm run dev`.
 
-|                    Halaman Login                    |                    Dashboard Utama                     |
-| :-------------------------------------------------: | :----------------------------------------------------: |
-| ![Login Page](/public/screenshots/ss_loginPage.png) | ![Dashboard](/public/screenshots/ss_dashboardPage.png) |
-|         _2-column layout: branding + form_          |         _2-column grid: task list + add form_          |
+|                                                 Halaman Login                                                  |                                                   Dashboard Utama                                                    |
+| :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
+| ![Login Page](/public/screenshots/ss_loginPage.png) ![Login Page](/public/screenshots/ss_loginPage_mobile.png) | ![Dashboard](/public/screenshots/ss_dashboardPage.png) ![Dashboard](/public/screenshots/ss_dashboardPage_mobile.png) |
+|                                       _2-column layout: branding + form_                                       |                                        _2-column grid: task list + add form_                                         |
 
 **Fitur UI yang dapat dilihat:**
 
@@ -393,7 +393,7 @@ const handleSelectAll = (checked: boolean) => {
 
 ### 🔗 Links
 
-- **Repository GitHub:** `<tambahkan URL repo di sini>`
+- **Repository GitHub:** `https://github.com/abdulmajid34/technicaltest-fe-moc.git`
 - **Live Demo:** `<tambahkan URL deployment di sini>`
 
 ### 🧑‍💻 Tentang Proyek Ini
