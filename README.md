@@ -48,19 +48,34 @@ Proyek ini dibangun untuk memenuhi kriteria technical test yang mencakup:
 
 ## 🖼️ Screenshot Demo
 
-> Folder `screenshots/` dapat diisi dengan screenshot aktual setelah menjalankan `npm run dev`.
+### 🖥️ Tampilan Web (Desktop)
 
-|                                                 Halaman Login                                                  |                                                   Dashboard Utama                                                    |
-| :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
-| ![Login Page](/public/screenshots/ss_loginPage.png) ![Login Page](/public/screenshots/ss_loginPage_mobile.png) | ![Dashboard](/public/screenshots/ss_dashboardPage.png) ![Dashboard](/public/screenshots/ss_dashboardPage_mobile.png) |
-|                                       _2-column layout: branding + form_                                       |                                        _2-column grid: task list + add form_                                         |
+> Layout 2 kolom penuh — branding di kiri, form di kanan (Login) | task list 2/3 + tambah tugas 1/3 (Dashboard)
+
+|                                      Halaman Login                                      |                                      Dashboard Utama                                       |
+| :-------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+| <img src="public/screenshots/ss_loginPage.png" alt="Login Page - Desktop" width="480"/> | <img src="public/screenshots/ss_dashboardPage.png" alt="Dashboard - Desktop" width="480"/> |
+|                     _2-column layout: branding neobrutalism + form_                     |                     _2-column grid: task list (2/3) + add form (1/3)_                      |
+
+---
+
+### 📱 Tampilan Mobile Device
+
+> Layout berubah menjadi 1 kolom penuh — komponen disusun vertikal agar nyaman di layar kecil
+
+|                                         Login Mobile                                          |                                         Dashboard Mobile                                         |
+| :-------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
+| <img src="public/screenshots/ss_loginPage_mobile.png" alt="Login Page - Mobile" width="260"/> | <img src="public/screenshots/ss_dashboardPage_mobile.png" alt="Dashboard - Mobile" width="260"/> |
+|                            _Branding di atas, form login di bawah_                            |                        _Navbar sticky, filter bar, task list scrollable_                         |
+
+---
 
 **Fitur UI yang dapat dilihat:**
 
-- 🎨 **Login Page** — Layout 2 kolom, kolom kiri dengan branding neobrutalism (card miring, warna kuning cerah, dekorasi geometris), kolom kanan berisi form login dengan validasi real-time
-- 📋 **Dashboard** — Sticky navbar, grid 2 kolom (task list 2/3 + form tambah 1/3), scrollable task list, filter bar, bulk action bar
-- 🌙 **Dark Mode** — Toggle di navbar, persisten across refresh
-- 📱 **Responsif** — Layout berubah menjadi 1 kolom di layar mobile
+- 🎨 **Login Page** — Layout 2 kolom (desktop) / 1 kolom (mobile), kolom kiri dengan branding neobrutalism (card miring, warna kuning cerah, dekorasi geometris), kolom kanan berisi form login dengan validasi real-time
+- 📋 **Dashboard** — Sticky navbar, grid 2 kolom (task list 2/3 + form tambah 1/3 di desktop), scrollable task list (`max-h-[60vh] overflow-y-auto`), filter bar, bulk action bar
+- 🌙 **Dark Mode** — Toggle dengan ikon Sun/Moon di navbar, persisten across refresh via Zustand persist
+- 📱 **Responsif** — Layout otomatis berubah dari 2 kolom → 1 kolom di layar ≤ 768px (breakpoint Tailwind `md:`)
 
 ---
 
@@ -154,7 +169,7 @@ Proyek ini dibangun untuk memenuhi kriteria technical test yang mencakup:
 
 ```bash
 git clone <repo-url>
-cd taskflow-manager
+cd technicaltest-fe-moc
 ```
 
 **2. Install dependencies**
@@ -394,7 +409,7 @@ const handleSelectAll = (checked: boolean) => {
 ### 🔗 Links
 
 - **Repository GitHub:** `https://github.com/abdulmajid34/technicaltest-fe-moc.git`
-- **Live Demo:** `<tambahkan URL deployment di sini>`
+- **Live Demo:** `https://taskflow-manager.abdulmajidti.my.id/`
 
 ### 🧑‍💻 Tentang Proyek Ini
 
@@ -409,3 +424,8 @@ Proyek ini diselesaikan sebagai bagian dari technical test frontend. Seluruh kod
 ### 🙏 Terima Kasih
 
 Terima kasih kepada tim reviewer yang telah menyediakan waktu untuk mengevaluasi proyek ini. Semua feedback sangat diapresiasi dan akan menjadi bahan pembelajaran yang berharga. 🚀
+
+## 👤 Author
+
+**Technical Test Frontend — MOC (TaskFlow Manager Web App)**  
+Built with ❤️ by **Abdul Majid** using ReactJS + TailwindCSS v4 + TypeScript
