@@ -7,13 +7,13 @@ import { Loader2 } from 'lucide-react';
 
 export const TaskList = () => {
   const { data: tasks, isLoading, isError } = useTasks();
-  const { status, searchKeyword } = useFilterStore();
+  const { status, searchKeyword, perPage } = useFilterStore();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   const filteredTasks = useMemo(() => {
     if (!tasks) return [];
     
-    return tasks.filter((task) => {
+    let filtered = tasks.filter((task) => {
       // Filter by status
       if (status === 'selesai' && !task.completed) return false;
       if (status === 'belum selesai' && task.completed) return false;
@@ -28,7 +28,14 @@ export const TaskList = () => {
       
       return true;
     });
-  }, [tasks, status, searchKeyword]);
+
+    if (perPage !== 'all') {
+      const limit = typeof perPage === 'string' ? parseInt(perPage, 10) : perPage;
+      filtered = filtered.slice(0, limit);
+    }
+
+    return filtered;
+  }, [tasks, status, searchKeyword, perPage]);
 
   const handleSelect = (id: string, checked: boolean) => {
     setSelectedIds((prev) => 
@@ -47,14 +54,14 @@ export const TaskList = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-black" />
       </div>
     );
   }
 
   if (isError) {
     return (
-      <div className="text-center py-12 text-red-500">
+      <div className="text-center py-12 font-bold text-red-500 bg-red-100 border-2 border-black">
         <p>Gagal memuat tugas. Silakan coba lagi.</p>
       </div>
     );
@@ -63,27 +70,27 @@ export const TaskList = () => {
   const allSelected = filteredTasks.length > 0 && selectedIds.length === filteredTasks.length;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 relative">
       {filteredTasks.length > 0 && (
-        <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+        <div className="flex items-center gap-2 mb-4">
           <input
             type="checkbox"
             checked={allSelected}
             onChange={(e) => handleSelectAll(e.target.checked)}
-            className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="w-5 h-5 border-2 border-black accent-neo-blue cursor-pointer shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-shadow"
           />
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <span className="text-sm font-bold uppercase tracking-wide">
             Pilih Semua ({filteredTasks.length})
           </span>
         </div>
       )}
 
       {filteredTasks.length === 0 ? (
-        <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-dashed border-gray-300 dark:border-gray-700">
-          <p className="text-gray-500 dark:text-gray-400">Tidak ada tugas yang ditemukan.</p>
+        <div className="text-center py-12 card-neo bg-gray-100 border-dashed">
+          <p className="font-bold text-gray-500 uppercase">Tidak ada tugas yang ditemukan.</p>
         </div>
       ) : (
-        <div className="grid gap-4">
+        <div className="grid gap-2">
           {filteredTasks.map((task) => (
             <TaskItem
               key={task.id}
@@ -102,3 +109,4 @@ export const TaskList = () => {
     </div>
   );
 };
+

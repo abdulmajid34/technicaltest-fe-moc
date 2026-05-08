@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useCreateTask } from '../api/taskQueries';
+import { Plus } from 'lucide-react';
 
 const taskSchema = z.object({
   title: z.string().min(1, { message: 'Judul tugas wajib diisi' }),
@@ -31,34 +32,38 @@ export const TaskForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md mb-6 transition-colors">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Tambah Tugas Baru</h3>
+    <form onSubmit={handleSubmit(onSubmit)} className="card-neo bg-neo-blue flex flex-col">
+      <div className="border-b-2 border-black pb-2 mb-4 bg-white px-2 py-1 inline-block w-max border-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+        <h3 className="text-lg font-black uppercase text-black">Tambah Tugas Baru</h3>
+      </div>
       <div className="space-y-4">
         <div>
           <input
             {...register('title')}
             type="text"
             placeholder="Judul tugas..."
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors"
+            className="input-neo w-full"
           />
-          {errors.title && <p className="mt-1 text-sm text-red-500">{errors.title.message}</p>}
+          {errors.title && <p className="mt-2 text-sm font-bold bg-red-200 border-2 border-black inline-block px-2">{errors.title.message}</p>}
         </div>
         <div>
           <textarea
             {...register('description')}
             placeholder="Deskripsi (opsional)..."
             rows={3}
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors"
+            className="input-neo w-full resize-none"
           />
         </div>
         <button
           type="submit"
           disabled={isPending}
-          className="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-medium rounded-lg transition-colors"
+          className="btn-neo w-full flex items-center justify-center gap-2"
         >
-          {isPending ? 'Menambahkan...' : 'Tambah Tugas'}
+          <Plus className="w-5 h-5" />
+          {isPending ? 'MENAMBAHKAN...' : 'TAMBAH TUGAS'}
         </button>
       </div>
     </form>
   );
 };
+

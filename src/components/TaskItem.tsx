@@ -35,13 +35,13 @@ export const TaskItem = ({ task, isSelected, onSelect }: TaskItemProps) => {
   };
 
   return (
-    <div className={`p-4 rounded-xl border ${task.completed ? 'bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700 opacity-75' : 'bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 shadow-sm'} transition-all flex gap-4 items-start group`}>
+    <div className={`card-neo !p-3 flex gap-4 items-start group mb-4 ${task.completed ? 'bg-gray-200' : 'bg-white'}`}>
       <div className="pt-1">
         <input
           type="checkbox"
           checked={isSelected}
           onChange={(e) => onSelect(task.id, e.target.checked)}
-          className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          className="w-5 h-5 border-2 border-black accent-neo-blue cursor-pointer shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-shadow"
         />
       </div>
       
@@ -52,38 +52,38 @@ export const TaskItem = ({ task, isSelected, onSelect }: TaskItemProps) => {
               type="text"
               value={editTitle}
               onChange={(e) => setEditTitle(e.target.value)}
-              className="w-full px-3 py-1 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="input-neo w-full !py-1 !text-sm"
             />
             <textarea
               value={editDesc}
               onChange={(e) => setEditDesc(e.target.value)}
-              className="w-full px-3 py-1 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="input-neo w-full !py-1 !text-sm resize-none"
               rows={2}
             />
             <div className="flex gap-2">
-              <button onClick={handleSaveEdit} disabled={isUpdating} className="p-1 text-green-600 hover:bg-green-50 rounded">
+              <button onClick={handleSaveEdit} disabled={isUpdating} className="btn-neo !bg-neo-green !px-2 !py-1">
                 <Check className="w-5 h-5" />
               </button>
-              <button onClick={() => setIsEditing(false)} className="p-1 text-red-600 hover:bg-red-50 rounded">
+              <button onClick={() => setIsEditing(false)} className="btn-neo !bg-neo-pink !px-2 !py-1">
                 <X className="w-5 h-5" />
               </button>
             </div>
           </div>
         ) : (
-          <div className={`transition-all ${task.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}`}>
+          <div className={`transition-all ${task.completed ? 'line-through opacity-70' : ''}`}>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={task.completed}
                 onChange={handleToggleComplete}
-                className="w-5 h-5 rounded-full border-gray-300 text-green-500 focus:ring-green-500 cursor-pointer"
+                className="w-5 h-5 border-2 border-black accent-neo-green cursor-pointer shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-shadow"
               />
-              <h4 className="text-lg font-medium truncate" title={task.title}>{task.title}</h4>
+              <h4 className="text-lg font-black truncate" title={task.title}>{task.title}</h4>
             </div>
             {task.description && (
-              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 pl-7 break-words">{task.description}</p>
+              <p className="mt-2 text-sm font-medium border-l-4 border-black pl-3 ml-7 break-words">{task.description}</p>
             )}
-            <p className="mt-2 text-xs text-gray-400 pl-7">
+            <p className="mt-2 text-xs font-bold text-gray-600 pl-7">
               {new Date(task.createdAt).toLocaleString('id-ID')}
             </p>
           </div>
@@ -91,17 +91,17 @@ export const TaskItem = ({ task, isSelected, onSelect }: TaskItemProps) => {
       </div>
 
       {!isEditing && (
-        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity shrink-0">
           <button
             onClick={() => setIsEditing(true)}
-            className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="btn-neo !bg-neo-blue !px-2 !py-2"
           >
             <Edit2 className="w-4 h-4" />
           </button>
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            className="btn-neo !bg-neo-pink !px-2 !py-2"
           >
             <Trash2 className="w-4 h-4" />
           </button>
