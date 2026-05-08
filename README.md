@@ -48,8 +48,8 @@ TaskFlow Manager adalah aplikasi manajemen tugas yang dibuat menggunakan React, 
 ## 🔑 Demo Credentials
 
 ```
-Email    : john@mail.com
-Password : changeme
+Email    : user@example.com
+Password : password123
 ```
 
 ## Fitur UI/UX (Neobrutalism & Dark Mode)
